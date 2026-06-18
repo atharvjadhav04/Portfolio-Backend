@@ -21,6 +21,9 @@ public class EmailController {
             @RequestBody EmailDTO request) {
 
         try {
+            System.out.println("=== API HIT ===");
+            System.out.println("Name: " + request.getName());
+            System.out.println("Email: " + request.getEmail());
 
             if (request.getName() == null || request.getName().isBlank()) {
                 return ResponseEntity.badRequest()
@@ -42,7 +45,7 @@ public class EmailController {
             return ResponseEntity.ok("Message sent successfully");
 
         } catch (Exception e) {
-
+            System.out.println("=== ERROR ===");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Failed to send message");
         }
